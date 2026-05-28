@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ScrapExpress Recycling</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+/* ================= GLOBAL ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#081018;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* ================= NAVBAR ================= */
+
+header{
+    width:100%;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    z-index:1000;
+    background:rgba(0,0,0,0.5);
+    backdrop-filter:blur(12px);
+}
+
+.logo{
+    font-size:34px;
+    font-weight:700;
+    color:#00ffae;
+}
+
+.logo span{
+    color:white;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    margin-left:30px;
+    font-weight:500;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#00ffae;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
+    url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2000&auto=format&fit=crop');
+
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    padding:0 8%;
+    position:relative;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    width:450px;
+    height:450px;
+    background:#00ffae;
+    border-radius:50%;
+    filter:blur(180px);
+    opacity:.15;
+    top:5%;
+    right:5%;
+}
+
+.hero-content{
+    max-width:700px;
+    position:relative;
+    z-index:2;
+}
+
+.hero-content h1{
+    font-size:75px;
+    line-height:90px;
+    margin-bottom:25px;
+}
+
+.hero-content h1 span{
+    color:#00ffae;
+}
+
+.hero-content p{
+    color:#d3d3d3;
+    font-size:18px;
+    line-height:34px;
+    margin-bottom:40px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:16px 34px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.4s;
+    display:inline-block;
+}
+
+.btn-primary{
+    background:#00ffae;
+    color:black;
+}
+
+.btn-primary:hover{
+    transform:translateY(-6px);
+    box-shadow:0 15px 35px rgba(0,255,174,.4);
+}
+
+.btn-secondary{
+    border:2px solid #00ffae;
+    color:#00ffae;
+}
+
+.btn-secondary:hover{
+    background:#00ffae;
+    color:black;
+}
+
+/* ================= STATS ================= */
+
+.stats{
+    padding:80px 8%;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    background:#0d1721;
+}
+
+.stat-box{
+    background:#111d29;
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    transition:.4s;
+}
+
+.stat-box:hover{
+    transform:translateY(-10px);
+    background:#162535;
+}
+
+.stat-box h2{
+    color:#00ffae;
+    font-size:45px;
+}
+
+.stat-box p{
+    margin-top:12px;
+    color:#bbb;
+}
+
+/* ================= SECTION TITLE ================= */
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title h2{
+    font-size:52px;
+    margin-bottom:15px;
+}
+
+.section-title p{
+    color:#aaa;
+    line-height:30px;
+}
+
+/* ================= SERVICES ================= */
+
+.services{
+    padding:120px 8%;
+}
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:35px;
+}
+
+.service-card{
+    background:linear-gradient(145deg,#101b26,#162535);
+    padding:40px;
+    border-radius:25px;
+    position:relative;
+    overflow:hidden;
+    transition:.4s;
+}
+
+.service-card::before{
+    content:'';
+    position:absolute;
+    width:160px;
+    height:160px;
+    background:#00ffae;
+    border-radius:50%;
+    top:-70px;
+    right:-70px;
+    opacity:.08;
+}
+
+.service-card:hover{
+    transform:translateY(-12px);
+}
+
+.service-card img{
+    width:80px;
+    margin-bottom:25px;
+}
+
+.service-card h3{
+    font-size:28px;
+    margin-bottom:18px;
+}
+
+.service-card p{
+    color:#bbb;
+    line-height:30px;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+    padding:120px 8%;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:70px;
+    align-items:center;
+}
+
+.about img{
+    width:100%;
+    border-radius:30px;
+    box-shadow:0 20px 50px rgba(0,0,0,.5);
+}
+
+.about-content h2{
+    font-size:55px;
+    margin-bottom:25px;
+}
+
+.about-content p{
+    color:#bbb;
+    line-height:34px;
+    margin-bottom:35px;
+}
+
+/* ================= CONTACT ================= */
+
+.contact{
+    padding:120px 8%;
+    background:#0d1721;
+}
+
+.contact-wrapper{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:40px;
+    margin-top:60px;
+}
+
+.contact-info{
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+}
+
+.info-box{
+    background:#111d29;
+    padding:30px;
+    border-radius:20px;
+    display:flex;
+    gap:20px;
+    align-items:flex-start;
+    transition:.4s;
+}
+
+.info-box:hover{
+    transform:translateY(-8px);
+    background:#162535;
+}
+
+.icon{
+    min-width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#00ffae;
+    color:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+}
+
+.info-box h3{
+    margin-bottom:10px;
+}
+
+.info-box a{
+    text-decoration:none;
+    color:#00ffae;
+}
+
+.info-box p{
+    color:#bbb;
+    line-height:28px;
+}
+
+.contact-form{
+    background:#111d29;
+    padding:40px;
+    border-radius:25px;
+}
+
+.input-group{
+    margin-bottom:20px;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:18px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    background:#192938;
+    color:white;
+    font-size:16px;
+}
+
+textarea{
+    resize:none;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    background:#050b11;
+    padding-top:70px;
+}
+
+.footer-container{
+    padding:0 8% 50px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:40px;
+}
+
+.footer-logo h2{
+    font-size:36px;
+    margin-bottom:20px;
+}
+
+.footer-logo span{
+    color:#00ffae;
+}
+
+.footer-logo p{
+    color:#aaa;
+    line-height:30px;
+}
+
+.footer-links h3,
+.footer-contact h3{
+    margin-bottom:20px;
+}
+
+.footer-links a{
+    display:block;
+    color:#aaa;
+    text-decoration:none;
+    margin-bottom:12px;
+    transition:.3s;
+}
+
+.footer-links a:hover{
+    color:#00ffae;
+}
+
+.footer-contact p{
+    color:#aaa;
+    margin-bottom:15px;
+}
+
+.social-icons{
+    margin-top:20px;
+}
+
+.social-icons a{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#111d29;
+    color:white;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    margin-right:12px;
+    text-decoration:none;
+    transition:.4s;
+}
+
+.social-icons a:hover{
+    background:#00ffae;
+    color:black;
+    transform:translateY(-5px);
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,.08);
+    padding:25px;
+    text-align:center;
+    color:#777;
+}
+
+/* ================= WHATSAPP FLOAT ================= */
+
+.whatsapp-float{
+    position:fixed;
+    width:65px;
+    height:65px;
+    bottom:25px;
+    right:25px;
+    background:#25d366;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:32px;
+    text-decoration:none;
+    z-index:999;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    nav{
+        display:none;
+    }
+
+    .hero-content h1{
+        font-size:50px;
+        line-height:65px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero-content h1{
+        font-size:38px;
+        line-height:52px;
+    }
+
+    .section-title h2,
+    .about-content h2{
+        font-size:38px;
+    }
+
+    .contact-form{
+        padding:25px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+
+    <div class="logo">
+        SCRAP<span>Scrap</span>
+    </div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+</header>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Smart <span>Scrap Recycling</span><br>
+            At Your Doorstep
+        </h1>
+
+        <p>
+            Fast scrap pickup service for homes, offices and industries.
+            Earn money from waste while supporting eco-friendly recycling.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#contact" class="btn btn-primary">
+                Book Pickup
+            </a>
+
+            <a href="#services" class="btn btn-secondary">
+                Explore Services
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= STATS ================= -->
+
+<section class="stats">
+
+    <div class="stat-box">
+        <h2>10K+</h2>
+        <p>Happy Customers</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>500+</h2>
+        <p>Daily Pickups</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>98%</h2>
+        <p>Satisfaction Rate</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>24/7</h2>
+        <p>Customer Support</p>
+    </div>
+
+</section>
+
+<!-- ================= SERVICES ================= -->
+
+<section class="services" id="services">
+
+    <div class="section-title">
+
+        <h2>Our Services</h2>
+
+        <p>
+            Professional scrap collection and recycling services
+        </p>
+
+    </div>
+
+    <div class="service-grid">
+
+        <div class="service-card">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/1046/1046857.png">
+
+            <h3>Paper Scrap</h3>
+
+            <p>
+                Newspapers, books, cartons and office paper recycling
+                with best market prices.
+            </p>
+
+        </div>
+
+        <div class="service-card">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/3659/3659899.png">
+
+            <h3>Metal Scrap</h3>
+
+            <p>
+                Copper, iron, aluminium and steel scrap collection
+                from homes and industries.
+            </p>
+
+        </div>
+
+        <div class="service-card">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png">
+
+            <h3>E-Waste Recycling</h3>
+
+            <p>
+                Safe disposal and recycling of old electronics,
+                laptops, batteries and computer systems.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
+
+    <img src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?q=80&w=1600&auto=format&fit=crop">
+
+    <div class="about-content">
+
+        <h2>Eco-Friendly Recycling Solutions</h2>
+
+        <p>
+            We provide reliable doorstep scrap pickup services with
+            transparent pricing, instant payment and environmentally
+            responsible recycling methods.
+        </p>
+
+        <a href="#contact" class="btn btn-primary">
+            Contact Now
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact" id="contact">
+
+    <div class="section-title">
+
+        <h2>Contact Us</h2>
+
+        <p>
+            Reach us anytime for scrap pickup booking
+        </p>
+
+    </div>
+
+    <div class="contact-wrapper">
+
+        <!-- CONTACT INFO -->
+
+        <div class="contact-info">
+
+            <div class="info-box">
+
+                <div class="icon">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+
+                <div>
+                    <h3>Phone Number</h3>
+
+                    <a href="tel:+919876543210">
+                        +91 98765 43210
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="info-box">
+
+                <div class="icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+
+                <div>
+                    <h3>Email Address</h3>
+
+                    <a href="mailto:info@ScrapExpress.com">
+                        info@ScrapExpress.com
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="info-box">
+
+                <div class="icon">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+
+                <div>
+                    <h3>WhatsApp</h3>
+
+                    <a href="https://wa.me/919876543210" target="_blank">
+                        Chat on WhatsApp
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="info-box">
+
+                <div class="icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+
+                <div>
+                    <h3>Office Address</h3>
+
+                    <p>
+                        Pune, Maharashtra, India
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-logo">
+
+            <h2>
+                SCRAP<span>Scrap</span>
+            </h2>
+
+            <p>
+                Smart and eco-friendly scrap recycling
+                solutions with fast doorstep pickup service.
+            </p>
+
+            <div class="social-icons">
+
+                <a href="#">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="footer-links">
+
+            <h3>Quick Links</h3>
+
+            <a href="#">Home</a>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+
+        </div>
+
+        <div class="footer-contact">
+
+            <h3>Contact Info</h3>
+
+            <p>📞 +91 00000000</p>
+            <p>✉️ info@scrap.com</p>
+            <p>📍 Pune, Maharashtra</p>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 ScrapExpress Recycling Pvt. Ltd.
+        All Rights Reserved.
+    </div>
+
+</footer>
+
+<!-- ================= WHATSAPP FLOAT ================= -->
+
+<a href="https://wa.me/919876543210"
+class="whatsapp-float"
+target="_blank">
+
+<i class="fa-brands fa-whatsapp"></i>
+
+</a>
+
+</body>
+</html>
